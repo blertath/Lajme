@@ -53,14 +53,9 @@ public class MainActivity extends ListActivity {
 			super.onPreExecute();
 			
 			loadingProgress = new ProgressDialog(MainActivity.this);
-			loadingProgress.setMessage("Duke i shkarkuar lajmet...");
-			
-			try{
-			    list.clear();		    
-			    loadingProgress.show();
-		    
-			}catch(Throwable e){				
-			}
+			loadingProgress.setMessage("Duke i shkarkuar lajmet...");			
+			list.clear();		    
+			loadingProgress.show();
 
 
 		}
@@ -83,14 +78,14 @@ public class MainActivity extends ListActivity {
 	}
 
 	private void updateNews(String url) {
-		Parser p = new Parser(this);
+		Parser parser = new Parser(this);
 		HttpGet getMethod = new HttpGet(url);
 
 		try {
 			
 			ResponseHandler<String> responseHandler = new BasicResponseHandler();
 			String responseBody = client.execute(getMethod, responseHandler);
-			list = p.fillList(responseBody, 0);
+			list = parser.fillList(responseBody, 0);
 
 		} catch (Throwable t) {
 			Log.e("updateNews Error", t.getMessage());
