@@ -45,7 +45,7 @@ public class MainActivity extends ListActivity {
     
     class AsyncNewsUpdate extends AsyncTask<String, Void, Void> {
 
-		Parser p = new Parser(MainActivity.this);
+		Parser p = new Parser();
 		ProgressDialog loadingProgress;
 		
 		@Override
@@ -78,7 +78,7 @@ public class MainActivity extends ListActivity {
 	}
 
 	private void updateNews(String url) {
-		Parser parser = new Parser(this);
+		Parser parser = new Parser();
 		HttpGet getMethod = new HttpGet(url);
 
 		try {
