@@ -43,7 +43,7 @@ public class NewsReadingActivity extends Activity {
 				shareIntent.setType("text/plain");
 				shareIntent.putExtra(Intent.EXTRA_SUBJECT, m_Intent.getStringExtra("newsTitle").toString());
 				shareIntent.putExtra(Intent.EXTRA_TEXT,  m_Intent.getStringExtra("newsLink").toString());
-				startActivity(Intent.createChooser(shareIntent, "Ndaj‘ lajmin me t‘ tjer‘t"));
+				startActivity(Intent.createChooser(shareIntent, "Shp‘rndaje lajmin me t‘ tjer‘t"));
 				break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -51,7 +51,7 @@ public class NewsReadingActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, SHARE_MENU, 0, "Ndaj‘ lajmin me t‘ tjer‘t").setIcon(android.R.drawable.ic_menu_share);
+		menu.add(0, SHARE_MENU, 0, "Shp‘rndaje lajmin me t‘ tjer‘t").setIcon(android.R.drawable.ic_menu_share);
 		return super.onCreateOptionsMenu(menu);
 	}
 }
