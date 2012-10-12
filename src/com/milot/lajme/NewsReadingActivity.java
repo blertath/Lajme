@@ -2,15 +2,12 @@ package com.milot.lajme;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NewsReadingActivity extends Activity {
 	TextView txtDetailedTitle;
@@ -32,13 +29,8 @@ public class NewsReadingActivity extends Activity {
 		final Intent intent = getIntent();
 		
 		content = intent.getStringExtra("newsBody").toString();		
-
-		if (content.contentEquals("http://zeri.info/rss-galeria.php")) {
-			txtDetailedBody.loadUrl("http://zeri.info/rss-galeria.php");
-			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-		}
-		else
-			txtDetailedBody.loadDataWithBaseURL(null, "<HTML>" + content + "</HTML>", "text/html", "utf-8", "about:blank");
+		
+		txtDetailedBody.loadDataWithBaseURL(null, "<HTML>" + content + "</HTML>", "text/html", "utf-8", "about:blank");
 			
 	}
 	
@@ -51,7 +43,7 @@ public class NewsReadingActivity extends Activity {
 				shareIntent.setType("text/plain");
 				shareIntent.putExtra(Intent.EXTRA_SUBJECT, m_Intent.getStringExtra("newsTitle").toString());
 				shareIntent.putExtra(Intent.EXTRA_TEXT,  m_Intent.getStringExtra("newsLink").toString());
-				startActivity(Intent.createChooser(shareIntent, "Shp‘rndaj n‘ rrjete sociale dhe Email"));
+				startActivity(Intent.createChooser(shareIntent, "Ndaj‘ lajmin me t‘ tjer‘t"));
 				break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -59,8 +51,7 @@ public class NewsReadingActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		if (!content.contentEquals("http://zeri.info/rss-galeria.php"))
-			menu.add(0, SHARE_MENU, 0, "Shp‘rndaj").setIcon(android.R.drawable.ic_menu_share);
+		menu.add(0, SHARE_MENU, 0, "Ndaj‘ lajmin me t‘ tjer‘t").setIcon(android.R.drawable.ic_menu_share);
 		return super.onCreateOptionsMenu(menu);
 	}
 }
