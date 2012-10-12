@@ -76,7 +76,7 @@ public class MainActivity extends ListActivity {
 		@Override
 		protected void onPostExecute(Void result) {
 			super.onPostExecute(result);
-			setListAdapter(new PersonCustomAdapter());			
+			setListAdapter(new NewsAdapter());			
 			loadingProgress.dismiss();
 		}
 
@@ -98,10 +98,10 @@ public class MainActivity extends ListActivity {
 
 	}
     
-    class PersonCustomAdapter extends ArrayAdapter<News>
+    class NewsAdapter extends ArrayAdapter<News>
     {
 
-		public PersonCustomAdapter() {
+		public NewsAdapter() {
 			super(MainActivity.this, R.layout.list_row, list);
 		}
 		
